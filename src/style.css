@@ -27,3 +27,8 @@ canvas{display:block;outline:none}
 .action.start-game:hover{filter:brightness(1.12);transform:translateY(-2px);box-shadow:0 7px 0 #126b63,0 10px 0 #07101d}
 .action.start-game:active{transform:translateY(4px);box-shadow:0 1px 0 #126b63,0 3px 0 #07101d}
 .action.secondary{background:#243653;color:#e8f0ff;border:2px solid #587397;border-radius:0;box-shadow:0 4px 0 #101a2b}
+
+/* Clear, prominent game launch control */
+.action.start-game{display:inline-flex;align-items:center;justify-content:center;min-width:240px;min-height:64px;padding:18px 34px;background:#39d9b5;color:#07131c;border:3px solid #b5fff0;border-radius:0;box-shadow:0 6px 0 #126b63,0 9px 0 #07101d;font:700 21px Oxanium,monospace;letter-spacing:.16em;text-shadow:1px 1px 0 #b5fff0;image-rendering:pixelated}
+.action.start-game:hover{filter:brightness(1.12);transform:translateY(-2px);box-shadow:0 8px 0 #126b63,0 11px 0 #07101d}
+.action.start-game:active{transform:translateY(5px);box-shadow:0 1px 0 #126b63,0 3px 0 #07101d}
