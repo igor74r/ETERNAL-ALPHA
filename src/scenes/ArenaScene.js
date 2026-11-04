@@ -59,7 +59,7 @@ export class ArenaScene extends Phaser.Scene {
     this.mode='menu';this.touch.classList.remove('visible');
     this.overlay.querySelectorAll('.overlay-panel').forEach(e=>e.remove());
     const gold=this.meta.data.gold;
-    this.panel(`<div class="eyebrow">A survival protocol</div><h1>ETERNAL ALPHA</h1><p>15 minutes against the endless. Evolve your arsenal, break the elite waves, and survive the void.</p><div class="control-hint">WASD / ARROWS · MOUSE AIM · AUTO-FIRE<br>TOUCH JOYSTICK · GAMEPAD</div><div class="menu-actions"><button class="action start-game" id="start">START GAME</button><button class="action secondary" id="armory">Armory · ${gold} ◈</button></div>`);
+    this.panel(`<div class="eyebrow">A survival protocol</div><h1>ETERNAL ALPHA</h1><p>15 minutes against the endless. Evolve your arsenal, break the elite waves, and survive the void.</p><div class="control-hint">WASD / ARROWS · MOUSE AIM · AUTO-FIRE<br>TOUCH JOYSTICK · GAMEPAD</div><div class="menu-actions"><button class="action start-game" id="start">ИГРАТЬ</button><button class="action secondary" id="armory">Armory · ${gold} ◈</button></div>`);
     this.overlay.querySelector('#start').onclick=()=>this.startRun();
     this.overlay.querySelector('#armory').onclick=()=>this.showArmory();
   }
