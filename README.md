@@ -2,9 +2,9 @@
 
 [![CI](https://github.com/igor74r/ETERNAL-ALPHA/actions/workflows/ci.yml/badge.svg)](https://github.com/igor74r/ETERNAL-ALPHA/actions/workflows/ci.yml)
 
-<a href="https://github.com/igor74r/ETERNAL-ALPHA/blob/main/index.html" target="_blank" rel="noopener"><img alt="ОТКРЫТЬ ИГРУ" src="https://img.shields.io/badge/ETERNAL_ALPHA-ОТКРЫТЬ_ИГРУ-7c3aed?style=for-the-badge"></a>
+<a href="https://igor74r.github.io/ETERNAL-ALPHA/" target="_blank" rel="noopener"><img alt="ЗАПУСТИТЬ ИГРУ" src="https://img.shields.io/badge/ETERNAL_ALPHA-ЗАПУСТИТЬ_ИГРУ-7c3aed?style=for-the-badge"></a>
 
-Кнопка открывает файл `index.html` прямо в репозитории в новой вкладке.
+Кнопка запускает собранную игру из файлов этого репозитория прямо в браузере. После первого CI-деплоя игра будет доступна по кнопке.
 
 A browser-based 15-minute survivor arena built with **Phaser 3** and **Vite**. Survive escalating voidborn waves, evolve a six-weapon arsenal, defeat milestone threats, and invest earned gold in permanent upgrades.
 
