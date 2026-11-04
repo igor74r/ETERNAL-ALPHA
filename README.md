@@ -2,9 +2,9 @@
 
 [![CI](https://github.com/igor74r/ETERNAL-ALPHA/actions/workflows/ci.yml/badge.svg)](https://github.com/igor74r/ETERNAL-ALPHA/actions/workflows/ci.yml)
 
-<a href="https://github.com/igor74r/ETERNAL-ALPHA/releases/latest/download/ETERNAL-ALPHA.zip"><img alt="Скачать и запустить ETERNAL ALPHA" src="https://img.shields.io/badge/ETERNAL_ALPHA-СКАЧАТЬ_И_ЗАПУСТИТЬ-7c3aed?style=for-the-badge"></a>
+<a href="https://github.com/igor74r/ETERNAL-ALPHA/releases/latest/download/ETERNAL-ALPHA.zip"><img alt="ЗАПУСТИТЬ ETERNAL ALPHA ИЗ ФАЙЛОВ" src="https://img.shields.io/badge/ETERNAL_ALPHA-ЗАПУСТИТЬ_ИЗ_ФАЙЛОВ-7c3aed?style=for-the-badge"></a>
 
-Скачай архив, распакуй его и запусти `launch.bat` (Windows) или `launch.command` (macOS). Игра откроется в браузере. Для запуска нужен Python 3.
+Кнопка скачивает готовую сборку игры из этого репозитория. Распакуй архив и запусти файл `launch.bat` (Windows) или `launch.command` (macOS) — он откроет локальный `dist/index.html` в браузере. Никакие игровые файлы со сторонних сайтов не загружаются. Для запуска нужен Python 3.
 
 A browser-based 15-minute survivor arena built with **Phaser 3** and **Vite**. Survive escalating voidborn waves, evolve a six-weapon arsenal, defeat milestone threats, and invest earned gold in permanent upgrades.
 
