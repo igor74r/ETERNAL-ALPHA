@@ -13,7 +13,7 @@ canvas{display:block;outline:none}
 .overlay-panel p{color:#a8b6d1;line-height:1.6;margin:12px auto 24px;max-width:440px}
 .action{border:0;border-radius:10px;padding:13px 22px;background:linear-gradient(110deg,#63e5f5,#9b86ff);color:#08101d;font:700 13px Oxanium,sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
 .action:hover{filter:brightness(1.1);transform:translateY(-1px)}
-.sub-action{margin-left:8px;background:#18243b;color:#c9d8f1;border:1px solid var(--line}
+.sub-action{margin-left:8px;background:#18243b;color:#c9d8f1;border:1px solid var(--line)}
 .level-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
 .level-card{border:1px solid #2c3c5d;border-radius:12px;background:#121d32;padding:16px 10px;cursor:pointer;color:#f1f6ff;text-align:left;min-height:145px}
 .level-card:hover{border-color:var(--cyan);background:#182640}
