@@ -81,6 +81,7 @@ export class ArenaScene extends Phaser.Scene {
     this.milestonesSeen.clear();this.weaponClocks={};this.enemies=[];this.bullets=[];this.gems=[];
     const m=this.meta.data.upgrades;
     this.stats={hp:GAME.startingHp+m.vitality*12,maxHp:GAME.startingHp+m.vitality*12,speed:GAME.playerSpeed,damage:1+m.power*.08,cooldown:1,magnet:GAME.magnetRadius*(1+m.magnet*.12),count:1,pierce:0,weaponLevels:{aether:1},weapons:['aether'],invuln:0};
+    if(this.player){this.player.destroy();this.player=null;}
     this.player=this.add.circle(0,0,GAME.playerRadius,0x67e8f9).setStrokeStyle(3,0xd8fbff).setDepth(10);
     this.physics.add.existing(this.player);this.player.body.setCircle(13);this.player.body.setCollideWorldBounds(false);
     this.cameras.main.startFollow(this.player,true,.09,.09);this.cameras.main.setZoom(Math.min(this.scale.width/950,this.scale.height/650,1.15));
@@ -117,7 +118,7 @@ export class ArenaScene extends Phaser.Scene {
     const angle=angleOverride??Phaser.Math.Angle.Between(origin.x,origin.y,target.x,target.y);
     const b=this.acquireBullet(origin.x,origin.y,weapon.color,weapon.id==='storm'?5:4);
     b.body.setVelocity(Math.cos(angle)*weapon.speed,Math.sin(angle)*weapon.speed);
-    b.damage=weapon.damage*this.stats.damage*(this.stats.weaponLevels[weapon.id]||1);
+    const weaponLevel=this.stats.weaponLevels[weapon.id]||1;\n    b.damage=weapon.damage*this.stats.damage*(1+(weaponLevel-1)*.25);
     b.pierce=(weapon.pierce||0)+this.stats.pierce;b.weaponId=weapon.id;b.life=weapon.id==='storm'?1.9:1.55;
   }
   useWeapon(weapon){
@@ -137,10 +138,10 @@ export class ArenaScene extends Phaser.Scene {
       const count=2+Math.min(4,lvl-1),radius=64;
       for(let i=0;i<count;i++){
         const a=this.elapsed*2.6+TAU*i/count,x=this.player.x+Math.cos(a)*radius,y=this.player.y+Math.sin(a)*radius;
-        this.damageEnemiesInCircle(x,y,18,weapon.damage*this.stats.damage*lvl*.18);
+        this.damageEnemiesInCircle(x,y,18,weapon.damage*this.stats.damage*(1+(lvl-1)*.25)*.18);
       }
     }else if(weapon.id==='nova'){
-      const radius=220+lvl*16;this.damageEnemiesInCircle(this.player.x,this.player.y,radius,weapon.damage*this.stats.damage*lvl);
+      const radius=220+lvl*16;this.damageEnemiesInCircle(this.player.x,this.player.y,radius,weapon.damage*this.stats.damage*(1+(lvl-1)*.25));
       const pulse=this.add.circle(this.player.x,this.player.y,24,weapon.color,.28).setStrokeStyle(4,weapon.color,.8).setDepth(8);
       this.tweens.add({targets:pulse,scale:radius/24,alpha:0,duration:360,onComplete:()=>pulse.destroy()});
       this.cameras.main.shake(130,.003);
@@ -284,6 +285,13 @@ export class ArenaScene extends Phaser.Scene {
     g.fillStyle(0xf16b8b,1);g.fillRoundedRect(30,34,284*clamp(this.stats.hp/this.stats.maxHp,0,1),12,6);
     g.fillStyle(0x1b3049,1);g.fillRoundedRect(30,62,284,8,4);
     g.fillStyle(0x67e8f9,1);g.fillRoundedRect(30,62,284*clamp(this.xp/this.xpNeed,0,1),8,4);
+    const boss=this.enemies.find(e=>e.active&&(e.kind==='boss'||e.kind==='elite'));
+    if(boss){
+      const bw=Math.min(W-40,460),bx=(W-bw)/2,by=18;
+      g.fillStyle(0x080d18,.92);g.fillRoundedRect(bx,by,bw,24,6);
+      g.fillStyle(boss.kind==='boss'?0xf15b78:0xffbd5b,1);
+      g.fillRoundedRect(bx+3,by+3,(bw-6)*clamp(boss.hp/boss.maxHp,0,1),18,4);
+    }
     const weaponNames=this.stats.weapons.map(id=>WEAPONS.find(w=>w.id===id)?.name.split(' ')[0]).join(' · ');
     this.hudText.setText(`HP ${Math.ceil(this.stats.hp)}/${this.stats.maxHp}     LV ${this.level}
 ${formatTime(this.elapsed)} / 15:00    ${this.kills} KILLS    ${this.meta.data.gold+this.runGold} ◈
