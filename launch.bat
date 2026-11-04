@@ -19,6 +19,6 @@ if not exist "node_modules\vite\bin\vite.js" (
   )
 )
 
-start "" cmd /c "timeout /t 2 /nobreak >nul & start http://127.0.0.1:5173"
+start "" powershell -NoProfile -ExecutionPolicy Bypass -Command "$u='http://127.0.0.1:5173'; for($i=0;$i -lt 90;$i++){try{$r=Invoke-WebRequest -UseBasicParsing $u -TimeoutSec 1; if($r.StatusCode -eq 200){Start-Process $u; exit}}catch{}; Start-Sleep -Seconds 1}"
 call npm run dev -- --host 127.0.0.1
 pause
