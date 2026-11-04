@@ -122,7 +122,12 @@ export class ArenaScene extends Phaser.Scene {
   }
   useWeapon(weapon){
     const lvl=this.stats.weaponLevels[weapon.id]||1;
-    const target=this.nearestTarget(this.player,weapon.id==='drone'?560:Infinity);
+    let target=this.nearestTarget(this.player,weapon.id==='drone'?560:Infinity);
+    if((weapon.id==='aether'||weapon.id==='storm')&&this.lastAim&&this.time.now-this.lastAimAt<2200){
+      let aimTarget=null,aimDistance=180;
+      for(const enemy of this.enemies){const d=Phaser.Math.Distance.Between(enemy.x,enemy.y,this.lastAim.x,this.lastAim.y);if(d<aimDistance){aimTarget=enemy;aimDistance=d;}}
+      if(aimTarget)target=aimTarget;
+    }
     if(weapon.id==='aether'||weapon.id==='storm'){
       if(!target)return;
       const count=weapon.id==='aether'?this.stats.count:1;
