@@ -12,7 +12,8 @@ const game = new Phaser.Game({
   height: GAME.height,
   scale: { mode: Phaser.Scale.RESIZE, autoCenter: Phaser.Scale.CENTER_BOTH },
   physics: { default: 'arcade', arcade: { debug: false } },
-  scene: [ArenaScene],\n  input: { gamepad: true },
+  scene: [ArenaScene],
+  input: { gamepad: true },
   render: { antialias: true, pixelArt: false, roundPixels: false },
 });
 window.__ETERNAL_ALPHA__ = { game, meta, config: { GAME, ENEMIES, WEAPONS, pickUpgrade, formatTime } };
