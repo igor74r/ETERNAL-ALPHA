@@ -28,7 +28,7 @@ export class ArenaScene extends Phaser.Scene {
     this.scale.on('resize',()=>this.layout());
   }
   drawArena(){
-    const g=this.add.graphics().setDepth(-20;
+    const g=this.add.graphics().setDepth(-20);
     g.lineStyle(1,0x17243a,.5);
     for(let x=-2400;x<2400;x+=72)g.lineBetween(x,-2400,x,2400);
     for(let y=-2400;y<2400;y+=72)g.lineBetween(-2400,y,2400,y);
