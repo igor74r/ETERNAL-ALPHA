@@ -2,7 +2,19 @@
 
 A browser-based 15-minute survivor arena built with **Phaser 3** and **Vite**. Survive escalating voidborn waves, evolve a six-weapon arsenal, defeat milestone threats, and invest earned gold in permanent upgrades.
 
-## Play / develop
+## Play
+
+<p align="center">
+  <a href="https://igor74r.github.io/ETERNAL-ALPHA/">
+    <img alt="Играть в ETERNAL ALPHA" src="https://img.shields.io/badge/%E2%96%B6%20%D0%98%D0%93%D0%A0%D0%90%D0%A2%D0%AC-ETERNAL%20ALPHA-18d9c5?style=for-the-badge&labelColor=101827" />
+  </a>
+</p>
+
+**[▶ Играть в браузере](https://igor74r.github.io/ETERNAL-ALPHA/)** — откроется опубликованная страница игры.
+
+> Первый запуск публикации произойдёт автоматически после успешного CI на `main`. Если GitHub Pages ещё не включён в настройках репозитория, выбери **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+## Develop
 ```bash
 npm install
 npm run dev
