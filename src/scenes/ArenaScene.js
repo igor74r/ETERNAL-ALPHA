@@ -78,7 +78,10 @@ export class ArenaScene extends Phaser.Scene {
     this.overlay.querySelectorAll('.overlay-panel').forEach(e=>e.remove());
     this.touch.classList.add('visible');this.mode='playing';
     this.elapsed=0;this.spawnClock=0;this.level=1;this.xp=0;this.xpNeed=6;this.kills=0;this.runGold=0;
-    this.milestonesSeen.clear();this.weaponClocks={};this.enemies=[];this.bullets=[];this.gems=[];
+    this.milestonesSeen.clear();this.weaponClocks={};
+    this.enemies.forEach(e=>e.destroy());this.gems.forEach(g=>g.destroy());
+    this.bulletPool.forEach(b=>{b.setActive(false).setVisible(false);if(b.body)b.body.enable=false;});
+    this.enemies=[];this.bullets=[];this.gems=[];
     const m=this.meta.data.upgrades;
     this.stats={hp:GAME.startingHp+m.vitality*12,maxHp:GAME.startingHp+m.vitality*12,speed:GAME.playerSpeed,damage:1+m.power*.08,cooldown:1,magnet:GAME.magnetRadius*(1+m.magnet*.12),count:1,pierce:0,weaponLevels:{aether:1},weapons:['aether'],invuln:0};
     if(this.player){this.player.destroy();this.player=null;}
@@ -153,7 +156,7 @@ export class ArenaScene extends Phaser.Scene {
       }
     }else if(weapon.id==='singularity'){
       const target=this.nearestTarget();const x=target?target.x:this.player.x,y=target?target.y:this.player.y;
-      this.damageEnemiesInCircle(x,y,260+lvl*30,weapon.damage*this.stats.damage*lvl);
+      this.damageEnemiesInCircle(x,y,260+lvl*30,weapon.damage*this.stats.damage*(1+(lvl-1)*.25));
       const blast=this.add.circle(x,y,20,weapon.color,.34).setStrokeStyle(3,weapon.color).setDepth(8);
       this.tweens.add({targets:blast,scale:14,alpha:0,duration:460,onComplete:()=>blast.destroy()});
     }
