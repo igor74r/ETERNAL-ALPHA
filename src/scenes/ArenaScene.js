@@ -120,6 +120,7 @@ export class ArenaScene extends Phaser.Scene {
     let b=this.bulletPool.find(o=>!o.active);
     if(!b){b=this.add.circle(x,y,radius,color).setDepth(6);this.physics.add.existing(b);b.body.setCircle(radius);b.body.setAllowGravity(false);this.bulletPool.push(b);}
     b.setActive(true).setVisible(true).setPosition(x,y).setFillStyle(color);b.body.enable=true;b.body.reset(x,y);b.damage=0;b.pierce=0;b.life=1.6;b.hitIds=new Set();
+    if(!this.bullets.includes(b))this.bullets.push(b);
     return b;
   }
   fireProjectile(weapon,target,origin=this.player,angleOverride=null){
