@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import './style.css';
 import { GAME, ENEMIES, WEAPONS, pickUpgrade, formatTime } from './systems/config.js';
 import { MetaProgress } from './systems/meta.js';
 import { ArenaScene } from './scenes/ArenaScene.js';
