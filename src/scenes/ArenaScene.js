@@ -127,7 +127,8 @@ export class ArenaScene extends Phaser.Scene {
     const angle=angleOverride??Phaser.Math.Angle.Between(origin.x,origin.y,target.x,target.y);
     const b=this.acquireBullet(origin.x,origin.y,weapon.color,weapon.id==='storm'?5:4);
     b.body.setVelocity(Math.cos(angle)*weapon.speed,Math.sin(angle)*weapon.speed);
-    const weaponLevel=this.stats.weaponLevels[weapon.id]||1;\n    b.damage=weapon.damage*this.stats.damage*(1+(weaponLevel-1)*.25);
+    const weaponLevel=this.stats.weaponLevels[weapon.id]||1;
+    b.damage=weapon.damage*this.stats.damage*(1+(weaponLevel-1)*.25);
     b.pierce=(weapon.pierce||0)+this.stats.pierce;b.weaponId=weapon.id;b.life=weapon.id==='storm'?1.9:1.55;
   }
   useWeapon(weapon){
