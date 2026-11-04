@@ -22,18 +22,13 @@ jobs:
       - run: npm run test
       - run: npm run build
 
-  deploy:
-    name: Publish game
+  package:
+    name: Build downloadable game
     if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
     needs: verify
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -41,10 +36,18 @@ jobs:
           node-version: 20
       - run: npm install
       - run: npm run build
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - name: Assemble launch package
+        run: |
+          mkdir -p package
+          cp -r dist package/dist
+          cp launch.bat launch.command package/
+          cd package
+          zip -r ../ETERNAL-ALPHA.zip .
+      - name: Publish downloadable package
+        uses: softprops/action-gh-release@v2
         with:
-          path: dist
-      - name: Publish game
-        id: deployment
-        uses: actions/deploy-pages@v4
+          tag_name: latest-build
+          name: Latest playable build
+          body: Download ETERNAL-ALPHA.zip, extract it, then run launch.bat (Windows) or launch.command (macOS).
+          files: ETERNAL-ALPHA.zip
+          make_latest: true
