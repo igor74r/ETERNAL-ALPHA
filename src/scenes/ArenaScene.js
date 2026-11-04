@@ -99,9 +99,15 @@ export class ArenaScene extends Phaser.Scene {
     const x=this.player.x+Math.cos(angle)*range,y=this.player.y+Math.sin(angle)*range;
     const t=type||(this.elapsed>100&&Math.random()<.18?'brute':Math.random()<.36?'runner':'crawler');
     const cfg=ENEMIES[t];if(!cfg)return;
-    const e=this.add.circle(x,y,cfg.radius,cfg.color).setStrokeStyle(t==='boss'?5:2,0xf2f6ff,.75).setDepth(4);
+    let e;
+    if(t==='boss')e=this.add.star(x,y,8,cfg.radius*.58,cfg.radius,cfg.color);
+    else if(t==='elite')e=this.add.star(x,y,6,cfg.radius*.55,cfg.radius,cfg.color);
+    else if(t==='runner')e=this.add.triangle(x,y,0,-cfg.radius,cfg.radius,cfg.radius,-cfg.radius,cfg.radius,cfg.color);
+    else if(t==='brute')e=this.add.rectangle(x,y,cfg.radius*1.65,cfg.radius*1.65,cfg.color);
+    else e=this.add.circle(x,y,cfg.radius,cfg.color);
+    e.setStrokeStyle(t==='boss'?5:t==='elite'?3:2,0xf2f6ff,.75).setDepth(4);
     this.physics.add.existing(e);e.body.setCircle(cfg.radius);e.body.setAllowGravity(false);
-    e.kind=t;e.hp=cfg.hp*(1+this.elapsed/300);e.maxHp=e.hp;e.cfg=cfg;e.touchClock=0;e.xp=cfg.xp;e.attackClock=0;
+    e.kind=t;e.hp=cfg.hp*(1+this.elapsed/300);e.maxHp=e.hp;e.cfg=cfg;e.touchClock=0;e.xp=cfg.xp;e.attackClock=0;e.dashTimer=0;e.dashVector={x:0,y:0};
     e.setData('spawnedAt',this.elapsed);this.enemies.push(e);
     if(t==='boss'){e.setScale(1.35);e.setStrokeStyle(5,0xffe1a3);this.cameras.main.shake(450,.009);}
   }
@@ -237,11 +243,19 @@ export class ArenaScene extends Phaser.Scene {
       if(!e.active)continue;
       const a=Phaser.Math.Angle.Between(e.x,e.y,this.player.x,this.player.y);
       let speed=e.cfg.speed;
-      if(e.kind==='boss'&&this.elapsed-e.getData('spawnedAt')>8){
+      if(e.kind==='boss'){
         e.attackClock+=dt;
-        if(e.attackClock>5){e.attackClock=0;speed*=2.3;this.cameras.main.shake(200,.004);}
-      }
-      e.body.setVelocity(Math.cos(a)*speed,Math.sin(a)*speed);
+        if(e.attackClock>4.2&&e.dashTimer<=0){
+          e.attackClock=0;e.dashTimer=.62;
+          const dash=Phaser.Math.Angle.Between(e.x,e.y,this.player.x,this.player.y);
+          e.dashVector={x:Math.cos(dash),y:Math.sin(dash)};
+          this.cameras.main.shake(260,.006);
+        }
+        if(e.dashTimer>0){
+          e.dashTimer=Math.max(0,e.dashTimer-dt);
+          e.body.setVelocity(e.dashVector.x*e.cfg.speed*3.1,e.dashVector.y*e.cfg.speed*3.1);
+        }else e.body.setVelocity(Math.cos(a)*speed,Math.sin(a)*speed);
+      }else e.body.setVelocity(Math.cos(a)*speed,Math.sin(a)*speed);
       e.touchClock-=dt;
       if(distance(e,this.player)<e.cfg.radius+GAME.playerRadius&&e.touchClock<=0){
         e.touchClock=.72;
