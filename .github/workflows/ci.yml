@@ -9,8 +9,6 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 jobs:
   verify:
@@ -20,60 +18,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
       - run: npm install
       - run: npm run test
       - run: npm run build
-
-  deploy:
-    name: Launch game from repository files
-    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
-    needs: verify
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm install
-      - run: npm run build
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-      - name: Deploy playable game
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-  package:
-    name: Build downloadable game
-    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
-    needs: verify
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm install
-      - run: npm run build
-      - name: Assemble launch package
-        run: |
-          chmod +x launch.command
-          mkdir -p package
-          cp -r dist package/dist
-          cp launch.bat launch.command package/
-          cd package
-          zip -r ../ETERNAL-ALPHA.zip .
-      - name: Publish downloadable package
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: latest-build
-          name: Latest playable build
-          body: Download ETERNAL-ALPHA.zip, extract it, then run launch.bat (Windows) or launch.command (macOS).
-          files: ETERNAL-ALPHA.zip
-          make_latest: true
