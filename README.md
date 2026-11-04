@@ -2,13 +2,15 @@
 
 [![CI](https://github.com/igor74r/ETERNAL-ALPHA/actions/workflows/ci.yml/badge.svg)](https://github.com/igor74r/ETERNAL-ALPHA/actions/workflows/ci.yml)
 
-<a href="https://raw.githack.com/igor74r/ETERNAL-ALPHA/main/index.html" target="_blank" rel="noopener"><img alt="Играть в браузере" src="https://img.shields.io/badge/Играть_в_браузере-Запустить-7c3aed?style=for-the-badge"></a>
+## Запуск игры
 
-Нажми **Играть в браузере** — откроется `index.html` из корня репозитория. Игра загружается напрямую из исходных файлов; стартовое меню появляется сразу после загрузки.
+В корне проекта находится файл **`launch.bat`**. На Windows запусти его двойным щелчком: он установит зависимости при первом запуске, поднимет игровой сервер и откроет игру в браузере. Не запускай `index.html` двойным щелчком — проект использует ES-модули и Phaser через Vite.
+
+Для macOS/Linux используй **`launch.command`** (на macOS при необходимости разреши запуск файла в свойствах).
 
 A browser-based 15-minute survivor arena built with **Phaser 3** and **Vite**. Survive escalating voidborn waves, evolve a six-weapon arsenal, defeat milestone threats, and invest earned gold in permanent upgrades.
 
-## Запуск локально
+## Ручной запуск
 ```bash
 npm install
 npm run dev
