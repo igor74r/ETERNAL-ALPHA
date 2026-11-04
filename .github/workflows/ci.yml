@@ -38,6 +38,7 @@ jobs:
       - run: npm run build
       - name: Assemble launch package
         run: |
+          chmod +x launch.command
           mkdir -p package
           cp -r dist package/dist
           cp launch.bat launch.command package/
