@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+:root{font-family:Inter,system-ui,sans-serif;color:#e8f0ff;background:#070b14;font-synthesis:none;text-rendering:optimizeLegibility}
+*{box-sizing:border-box}
+html,body,#app{margin:0;width:100%;height:100%;overflow:hidden;background:#070b14}
+#game-shell{position:relative;width:100%;height:100%;display:grid;place-items:center;background:radial-gradient(ellipse at center,#101b31 0%,#070b14 75%)}
+#game{width:100%;height:100%;max-width:1600px;max-height:900px}
+canvas{display:block;outline:none}
+#overlay{position:absolute;inset:0;pointer-events:none}
+:root{--cyan:#67e8f9;--violet:#9c83ff;--panel:rgba(10,16,32,.92);--line:rgba(142,170,220,.2)}
+.overlay-panel{pointer-events:auto;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(560px,calc(100vw - 32px));padding:32px;border:1px solid var(--line);border-radius:18px;background:var(--panel);box-shadow:0 24px 90px #0009;backdrop-filter:blur(14px);text-align:center}
+.eyebrow{font:600 11px Oxanium,sans-serif;letter-spacing:.24em;color:var(--cyan);text-transform:uppercase}
+.overlay-panel h1{font:700 clamp(30px,6vw,52px) Oxanium,sans-serif;letter-spacing:.04em;margin:12px 0;color:#f1f6ff}
+.overlay-panel p{color:#a8b6d1;line-height:1.6;margin:12px auto 24px;max-width:440px}
+.action{border:0;border-radius:10px;padding:13px 22px;background:linear-gradient(110deg,#63e5f5,#9b86ff);color:#08101d;font:700 13px Oxanium,sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.action:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.sub-action{margin-left:8px;background:#18243b;color:#c9d8f1;border:1px solid var(--line}
+.level-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.level-card{border:1px solid #2c3c5d;border-radius:12px;background:#121d32;padding:16px 10px;cursor:pointer;color:#f1f6ff;text-align:left;min-height:145px}
+.level-card:hover{border-color:var(--cyan);background:#182640}
+.level-card strong{display:block;font:600 14px Oxanium;margin:10px 0;color:#fff}
+.level-card span{font-size:12px;color:#9baecb;line-height:1.4}
+@media(max-width:600px){.overlay-panel{padding:22px 16px}.level-cards{grid-template-columns:1fr;gap:8px}.level-card{min-height:0;padding:12px}.overlay-panel p{margin-bottom:14px}}
