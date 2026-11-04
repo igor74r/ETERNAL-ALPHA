@@ -44,7 +44,7 @@ export class ArenaScene extends Phaser.Scene {
   startRun(){
     this.overlay.innerHTML='';this.mode='playing';this.elapsed=0;this.spawnClock=0;this.fireClock=0;this.orbitClock=0;this.level=1;this.xp=0;this.xpNeed=6;this.kills=0;this.runGold=0;this.enemies=[];this.bullets=[];this.gems=[];
     const m=this.meta.data.upgrades;
-    this.stats={hp:GAME.startingHp+m.vitality*12,maxHp:GAME.startingHp+m.vitality*12,speed:GAME.playerSpeed,damage:1+m.power*.08,cooldown:1,magn et:GAME.magnetRadius*(1+m.magnet*.12),count:1,pierce:0};
+    this.stats={hp:GAME.startingHp+m.vitality*12,maxHp:GAME.startingHp+m.vitality*12,speed:GAME.playerSpeed,damage:1+m.power*.08,cooldown:1,magnet:GAME.magnetRadius*(1+m.magnet*.12),count:1,pierce:0};
     this.stats.magnet=this.stats.magnet||GAME.magnetRadius;
     this.stats.weapons=[0];this.stats.weaponLevels={aether:1};this.stats.invuln=0;this.stats.gold=0;
     this.player=this.add.circle(0,0,15,0x67e8f9).setStrokeStyle(3,0xd8fbff).setDepth(5);
