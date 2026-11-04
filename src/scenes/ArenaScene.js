@@ -137,7 +137,7 @@ export class ArenaScene extends Phaser.Scene {
     }else if(weapon.id==='nova'){
       const radius=220+lvl*16;this.damageEnemiesInCircle(this.player.x,this.player.y,radius,weapon.damage*this.stats.damage*lvl);
       const pulse=this.add.circle(this.player.x,this.player.y,24,weapon.color,.28).setStrokeStyle(4,weapon.color,.8).setDepth(8);
-      this.tweens.add({targets:pulse,radius,alpha:0,duration:360,onUpdate:()=>pulse.setScale(pulse.radius/24),onComplete:()=>pulse.destroy()});
+      this.tweens.add({targets:pulse,scale:radius/24,alpha:0,duration:360,onComplete:()=>pulse.destroy()});
       this.cameras.main.shake(130,.003);
     }else if(weapon.id==='drone'){
       const count=Math.min(3,lvl),nearest=this.nearestTarget(this.player,700);if(!nearest)return;
