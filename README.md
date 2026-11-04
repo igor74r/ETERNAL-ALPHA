@@ -2,11 +2,11 @@
 
 A browser-based 15-minute survivor arena built with **Phaser 3** and **Vite**. Survive escalating voidborn waves, evolve a six-weapon arsenal, defeat milestone threats, and invest earned gold in permanent upgrades.
 
-## Play
+## CI
 
-[Играть](https://igor74r.github.io/ETERNAL-ALPHA/)
+[Запустить CI](https://github.com/igor74r/ETERNAL-ALPHA/actions/workflows/ci.yml)
 
-> Первый запуск публикации произойдёт автоматически после успешного CI на `main`. Если GitHub Pages ещё не включён в настройках репозитория, выбери **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+Открой ссылку и нажми **Run workflow**, чтобы вручную запустить тесты и production-сборку.
 
 ## Develop
 ```bash
