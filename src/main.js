@@ -2,7 +2,6 @@ import Phaser from 'phaser';
 import { GAME, ENEMIES, WEAPONS, pickUpgrade, formatTime } from './systems/config.js';
 import { MetaProgress } from './systems/meta.js';
 import { ArenaScene } from './scenes/ArenaScene.js';
-import './style.css';
 
 const meta = new MetaProgress();
 const game = new Phaser.Game({
