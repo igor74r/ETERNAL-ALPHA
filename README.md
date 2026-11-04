@@ -2,9 +2,9 @@
 
 [![CI](https://github.com/igor74r/ETERNAL-ALPHA/actions/workflows/ci.yml/badge.svg)](https://github.com/igor74r/ETERNAL-ALPHA/actions/workflows/ci.yml)
 
-<a href="https://stackblitz.com/github/igor74r/ETERNAL-ALPHA" target="_blank" rel="noopener"><img alt="Играть в браузере" src="https://img.shields.io/badge/ИГРАТЬ_В_БРАУЗЕРЕ-ЗАПУСТИТЬ-7c3aed?style=for-the-badge"></a>
+<a href="https://igor74r.github.io/ETERNAL-ALPHA/index.html" target="_blank" rel="noopener"><img alt="Играть в браузере" src="https://img.shields.io/badge/ИГРАТЬ_В_БРАУЗЕРЕ-ЗАПУСТИТЬ-7c3aed?style=for-the-badge"></a>
 
-Кнопка открывает исходники из корня `main` в браузерной среде StackBlitz и запускает проект через Vite. GitHub Pages для этого не используется.
+Кнопка открывает браузерную версию игры из корня этого репозитория — по тому же принципу, что и `magic-rpg`.
 
 ## Запуск игры
 
