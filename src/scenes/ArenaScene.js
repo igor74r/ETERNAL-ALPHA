@@ -146,7 +146,7 @@ export class ArenaScene extends Phaser.Scene {
         this.fireProjectile(weapon,nearest,origin);
       }
     }else if(weapon.id==='singularity'){
-      const target=target||this.nearestTarget();const x=target?target.x:this.player.x,y=target?target.y:this.player.y;
+      const target=this.nearestTarget();const x=target?target.x:this.player.x,y=target?target.y:this.player.y;
       this.damageEnemiesInCircle(x,y,260+lvl*30,weapon.damage*this.stats.damage*lvl);
       const blast=this.add.circle(x,y,20,weapon.color,.34).setStrokeStyle(3,weapon.color).setDepth(8);
       this.tweens.add({targets:blast,scale:14,alpha:0,duration:460,onComplete:()=>blast.destroy()});
