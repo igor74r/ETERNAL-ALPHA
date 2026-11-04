@@ -2,22 +2,16 @@
 
 [![CI](https://github.com/igor74r/ETERNAL-ALPHA/actions/workflows/ci.yml/badge.svg)](https://github.com/igor74r/ETERNAL-ALPHA/actions/workflows/ci.yml)
 
-<a href="https://igor74r.github.io/ETERNAL-ALPHA/" target="_blank" rel="noopener"><img alt="ЗАПУСТИТЬ ИГРУ" src="https://img.shields.io/badge/ETERNAL_ALPHA-ЗАПУСТИТЬ_ИГРУ-7c3aed?style=for-the-badge"></a>
+<a href="https://github.com/codespaces/new?repo=igor74r/ETERNAL-ALPHA" target="_blank" rel="noopener"><img alt="ИГРАТЬ В БРАУЗЕРЕ" src="https://img.shields.io/badge/ETERNAL_ALPHA-ИГРАТЬ_В_БРАУЗЕРЕ-7c3aed?style=for-the-badge"></a>
 
-Кнопка запускает собранную игру из файлов этого репозитория прямо в браузере. После первого CI-деплоя игра будет доступна по кнопке.
+Нажми **ИГРАТЬ В БРАУЗЕРЕ** — откроется браузерная среда проекта, которая установит зависимости и запустит игру из исходных файлов репозитория. В открывшемся окне предпросмотра появится стартовое меню игры.
 
 A browser-based 15-minute survivor arena built with **Phaser 3** and **Vite**. Survive escalating voidborn waves, evolve a six-weapon arsenal, defeat milestone threats, and invest earned gold in permanent upgrades.
 
-## Develop
+## Запуск локально
 ```bash
 npm install
 npm run dev
-```
-Vite prints a local URL. Production output:
-```bash
-npm run test
-npm run build
-npm run preview
 ```
 
 ## Controls
@@ -48,7 +42,7 @@ Weapons fire automatically. Focus on movement, positioning, collecting XP, and c
 6. **Singularity** — large area implosion around a nearby threat.
 
 ## CI
-GitHub Actions runs tests and a Vite production build on pushes and pull requests targeting `main`.
+CI запускает тесты и проверяет production-сборку. Он не публикует игру и не выполняет её в CI.
 
 ## Tech
 - Phaser 3 Arcade Physics
