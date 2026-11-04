@@ -4,7 +4,7 @@ A browser-based 15-minute survivor arena built with **Phaser 3** and **Vite**. S
 
 ## Play
 
-[Играть](https://igor74r.github.io/ETERNAL-ALPHA/)
+<a href="https://igor74r.github.io/ETERNAL-ALPHA/" target="_blank"><strong>▶ ЗАПУСТИТЬ ИГРУ</strong></a>
 
 ## Develop
 ```bash
